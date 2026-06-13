@@ -1,3 +1,5 @@
+const mongoose = require("mongoose");
+
 const isValid = (input) => {
   if (typeof input === "undefined" || input === null) return false;
   if (typeof input === "string" && input.trim().length === 0) return false;
@@ -21,10 +23,13 @@ const isValidPassword = (input) =>
     input,
   );
 
+const isValidObjectId = (objectId) => mongoose.Types.ObjectId.isValid(objectId);
+
 module.exports = {
   isValid,
   isValidName,
   isValidEmail,
   isValidContact,
   isValidPassword,
+  isValidObjectId,
 };

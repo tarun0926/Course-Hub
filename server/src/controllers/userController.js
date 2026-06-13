@@ -71,6 +71,13 @@ const signupUser = async (req, res) => {
     let hashedPassword = await bcrypt.hash(password, 10);
     userData.password = hashedPassword;
 
+    // Role Validation
+    if(role){
+      if(role !== "student" && role !== "instructor"){
+        return res.status(400).json({msg: "Invalid Role"});
+      }
+    }
+
     let User = await userModel.create(userData);
     return res.status(201).json({ msg: "Signup Successfully Done", User });
   } catch (error) {

@@ -32,10 +32,12 @@ const courseSchema = new mongoose.Schema(
     category: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "category",
+      required: true,
     },
     instructorId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "user",
+      required: true,
     },
   },
   { timestamps: true },
